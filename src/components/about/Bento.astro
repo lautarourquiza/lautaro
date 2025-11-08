@@ -1,0 +1,217 @@
+---
+import { Mail, Github, Linkedin, MapPin, Calendar, Rocket, Code2, Stars, Cpu, FolderKanban, Clock, Sparkles } from "lucide-react";
+import Card from "../ui/Card";
+
+/**
+ * BentoGridAbout
+ * - Responsive Bento Grid ready to copy into Astro/React.
+ * - Replace the placeholder data in the `profile` and `content` objects.
+ * - Tailwind classes only; no external CSS needed.
+ */
+
+const profile = {
+  name: "Lautaro Ezequiel",
+  role: "Full‑Stack Developer (Next.js & Tailwind)",
+  location: "Buenos Aires, AR",
+  availability: "Disponibilidad inmediata/FT",
+  email: "lautaroezequielurquiza@mail.com",
+  github: "https://github.com/usuario",
+  linkedin: "https://linkedin.com/in/usuario",
+};
+
+const content = {
+  summary:
+    "Creo experiencias rápidas y accesibles, con foco en performance, DX y UI moderna. He construido e‑commerce, blogs y sitios para clientes reales.",
+  skills: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Next.js",
+    "React",
+    "Astro",
+    "Tailwind",
+    "TypeScript",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "MongoDB",
+    "Prisma",
+  ],
+  stats: [
+    { label: "Años de Exp.", value: "1.5+" },
+    { label: "Proyectos", value: "5+" },
+    { label: "Clientes", value: "3+" },
+  ],
+  projects: [
+    { name: "E‑commerce de Ropa", note: "Next.js" },
+    { name: "E‑commerce Electro", note: "React + Node + PostgreSQL" },
+    { name: "Sitio de DJ", note: "HTML + CSS + JS" },
+    { name: "Blog Cursos", note: "Next.js + NodeJS (SSG)" },
+  ],
+  learning: ["Python", "Angular"],
+  stackFavorites: ["MERN Stack", "HTML + CSS + JS", "Tailwind CSS"],
+};
+
+
+---
+
+
+    <section
+      id="about"
+      class="relative min-h-screen w-full py-12 md:px-10 flex items-center justify-center max-w-screen"
+    >
+      {/* animated background blobs */}
+      <div class="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-[#7aa2ff] opacity-20 blur-3xl" />
+      <div class="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[#6b97ff] opacity-20 blur-3xl" />
+
+      <div class="mx-auto w-full max-w-6xl">
+        {/* Header tiny breadcrumb */}
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-12">
+          {/* PROFILE / HERO (spans 5 cols, 2 rows) */}
+          <Card className="md:col-span-5 md:row-span-2 bg-gradient-to-br from-white/80 to-white/50">
+            <div class="flex flex-col items-start gap-5 md:flex-row md:items-center">
+              <div class="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl ring-4 ring-white/60 shadow-md">
+                <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#3e78ff] to-[#6b97ff] text-white text-2xl font-bold">
+                  <img
+						alt="Lautaro Ezequiel photo"
+						src="/src/assets/LautaroEzequiel.jpg"
+					/>
+                </div>
+              </div>
+              <div>
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900">
+                  {profile.name}
+                </h1>
+                <p class="mt-1 text-gray-700">{profile.role}</p>
+                <div class="mt-3 flex flex-wrap items-center gap-3 text-sm text-gray-600">
+                  <span class="inline-flex items-center gap-1"><MapPin className="h-4 w-4" />{profile.location}</span>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-3">
+                  <a href={profile.github} target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-gray-300/60 bg-white/80 px-3 py-2 text-sm font-medium text-gray-800 hover:-translate-y-0.5 hover:shadow-md transition">
+                    <Github className="h-4 w-4" /> GitHub
+                  </a>
+                  <a href={profile.linkedin} target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-gray-300/60 bg-white/80 px-3 py-2 text-sm font-medium text-gray-800 hover:-translate-y-0.5 hover:shadow-md transition">
+                    <Linkedin className="h-4 w-4" /> LinkedIn
+                  </a>
+                  <a href={`mailto:${profile.email}`} class="inline-flex items-center gap-2 rounded-xl bg-[#3e78ff] px-3 py-2 text-sm font-semibold text-white hover:bg-[#2f5fe0] hover:-translate-y-0.5 shadow-md transition">
+                    <Mail className="h-4 w-4" /> Contactar
+                  </a>
+                </div>
+              </div>
+            </div>
+            <p class="mt-5 text-gray-700 leading-relaxed">{content.summary}</p>
+          </Card>
+
+          {/* SKILLS CLOUD */}
+          <Card className="md:col-span-7">
+            <div class="mb-3 flex items-center gap-2">
+              <Code2 className="h-5 w-5 text-[#3e78ff]" />
+              <h3 class="text-lg font-semibold">Stack principal</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {content.skills.map((s) => (
+                <span
+                  class="rounded-full border border-gray-300/60 bg-white px-3 py-1 text-sm text-gray-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition"
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </Card>
+
+          {/* STATS */}
+          <Card className="md:col-span-5">
+            <div class="mb-3 flex items-center gap-2">
+              <Stars className="h-5 w-5 text-[#3e78ff]" />
+              <h3 class="text-lg font-semibold">Stats rápidas</h3>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+              {content.stats.map((st) => (
+                <div class="rounded-xl bg-white p-4 text-center shadow-sm">
+                  <div class="text-2xl font-extrabold text-gray-900">{st.value}</div>
+                  <div class="text-xs text-gray-500">{st.label}</div>
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          {/* PROJECTS */}
+          <Card className="md:col-span-7">
+            <div class="mb-3 flex items-center gap-2">
+              <FolderKanban className="h-5 w-5 text-[#3e78ff]" />
+              <h3 class="text-lg font-semibold">Proyectos recientes</h3>
+            </div>
+            <ul class="grid grid-cols-1 gap-3 md:grid-cols-2">
+              {content.projects.map((p) => (
+                <li class="rounded-xl border border-gray-200 bg-white p-4 hover:-translate-y-0.5 hover:shadow-md transition">
+                  <div class="font-semibold text-gray-900">{p.name}</div>
+                  <div class="text-sm text-gray-600">{p.note}</div>
+                </li>
+              ))}
+            </ul>
+          </Card>
+
+          {/* CURRENTLY LEARNING / FAVORITES */}
+          <Card className="md:col-span-5">
+            <div class="mb-3 flex items-center gap-2">
+              <Cpu className="h-5 w-5 text-[#3e78ff]" />
+              <h3 class="text-lg font-semibold">Ahora aprendiendo</h3>
+            </div>
+            <div class="mb-4 flex flex-wrap gap-2">
+              {content.learning.map((x) => (
+                <span  class="rounded-md bg-white px-3 py-1 text-sm text-gray-800 shadow-sm border border-gray-200">
+                  {x}
+                </span>
+              ))}
+            </div>
+            <div class="mb-2 flex items-center gap-2">
+              <Rocket className="h-5 w-5 text-[#3e78ff]" />
+              <h4 class="text-sm font-semibold">Favoritos del stack</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {content.stackFavorites.map((x) => (
+                <span class="rounded-md bg-white px-3 py-1 text-sm text-gray-800 shadow-sm border border-gray-200">
+                  {x}
+                </span>
+              ))}
+            </div>
+          </Card>
+
+          {/* AVAILABILITY / CTA */}
+          <Card className="md:col-span-12 bg-gradient-to-br from-[#3e78ff]/10 to-[#6b97ff]/10">
+            <div class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+              <div class="flex items-center gap-3">
+                <Clock className="h-5 w-5 text-[#3e78ff]" />
+                <p class="text-gray-800">
+                  <span class="font-semibold">Disponibilidad:</span> {profile.availability}
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <a
+                  href={`mailto:${profile.email}`}
+                  class="inline-flex items-center gap-2 rounded-xl bg-[#3e78ff] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2f5fe0] hover:-translate-y-0.5 shadow-md transition"
+                >
+                  <Mail className="h-4 w-4" /> Hablemos por email
+                </a>
+                <a
+                  href={profile.github}
+                  target="_blank"
+                  class="inline-flex items-center gap-2 rounded-xl border border-gray-300/60 bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:-translate-y-0.5 hover:shadow-md transition"
+                >
+                  <Github className="h-4 w-4" /> Ver GitHub
+                </a>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  class="inline-flex items-center gap-2 rounded-xl border border-gray-300/60 bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:-translate-y-0.5 hover:shadow-md transition"
+                >
+                  <Linkedin className="h-4 w-4" /> Conectar en LinkedIn
+                </a>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+

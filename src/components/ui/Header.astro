@@ -1,0 +1,87 @@
+---
+import { FaPaperclip } from "react-icons/fa";
+---
+
+<header
+    class="shadow-md sticky top-0 z-50 bg-background backdrop-blur-xl mask-fade-down"
+>
+    <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-around">
+        <p class="font-bold flex align-text-bottom text-xl"><span class="mr-0.5 text-[#3e78ff]">&#123;</span> Lautaro Ezequiel <span class="ml-0.5 text-[#6b97ff]">/&#125;</span></p>
+        <div class="hidden md:flex space-x-8 text-xs font-semibold">
+            <a href="#projects"
+                class="transform transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
+                >Proyectos</a
+            >
+            <a href="#knowledge"
+                class="transform transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
+                >Habilidades</a
+            >
+            <a
+                href="#about"
+                class="transform transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
+                >Sobre mí</a
+            >
+            <a
+                href="#contact"
+                class="transform transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
+                >Contacto</a
+            >
+            <a
+                href="./src/assets/CVLautaroUrquiza.pdf"
+                download
+                class="transform transition-all duration-300 inline-flex items-center gap-2 font-semibold rounded-lg hover:-translate-y-0.5 hover:text-primary"
+            >
+                <FaPaperclip className="text-base" /> CV
+            </a>
+        </div>
+        <input type="checkbox" id="menu-toggle" class="hidden" />
+        <label for="menu-toggle" class="md:hidden cursor-pointer">
+            <svg
+                class="w-8 h-8 text-foreground"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </label>
+        <ul
+            class="md:hidden absolute top-full left-0 w-full bg-background border-t border-border flex flex-col space-y-4 py-6 px-8 transition-all max-h-0 overflow-hidden"
+            style="max-height: 0;"
+            id="menu"
+        >
+            <li>
+                <a href="#inicio" class="block hover:text-primary">Inicio</a>
+            </li>
+            <li>
+                <a href="#sobremi" class="block hover:text-primary">Sobre mí</a>
+            </li>
+            <li>
+                <a href="#habilidades" class="block hover:text-primary"
+                    >Habilidades</a
+                >
+            </li>
+            <li>
+                <a href="#proyectos" class="block hover:text-primary">Proyectos</a>
+            </li>
+            <li>
+                <a href="#contacto" class="block hover:text-primary">Contacto</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Menú hamburguesa para móvil (simplificado sin JS) -->
+
+</header>
+
+<style>
+    /* Animación menú mobile simple */
+    #menu-toggle:checked + label + #menu {
+        max-height: 300px; /* Ajustar según contenido */
+    }
+</style>

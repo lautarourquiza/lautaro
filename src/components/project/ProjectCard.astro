@@ -1,0 +1,71 @@
+---
+import { FaArrowRight } from 'react-icons/fa';
+
+type Props = {
+    image: string;
+    alt: string;
+    title: string;
+    description: string;
+    link: string;
+    technologies: string[];
+};
+
+const { image, alt, title, description, link, technologies }: Props = Astro.props;
+
+const techData = {
+    HTML5: { color: "bg-orange-500", logo: "src/assets/logos/HTML5.png" },
+    CSS3: { color: "bg-blue-500", logo: "src/assets/logos/CSS3.png" },
+    JavaScript: { color: "bg-yellow-400", logo: "src/assets/logos/JavaScript.png" },
+    TailwindCSS: { color: "bg-blue-400", logo: "src/assets/logos/TailwindCSS.png" },
+    Sequelize: { color: "bg-blue-900", logo: "src/assets/logos/Sequelize.png" },
+    NextJS: { color: "bg-black", logo: "src/assets/logos/NextJS.png" },
+    Express: { color: "bg-white", logo: "src/assets/logos/Express.png" },
+    NodeJs: { color: "bg-green-500", logo: "src/assets/logos/NodeJs.png" },
+    ReactJS: { color: "bg-gray-700", logo: "src/assets/logos/ReactJS.png" },
+    MongoDB: { color: "bg-green-700", logo: "src/assets/logos/MongoDB.png" },    
+};
+---
+
+<article class="rounded-xl  shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden bg-gray-50">
+    <a target="_blank" href={link} class="block ">
+        <div class="relative overflow-hidden rounded-t-xl group">
+            <img
+                src={image}
+                alt={alt}
+                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-end text-white">
+                <h3 class="text-xl font-bold mb-2">{title}</h3>
+                <p class="text-sm flex items-center gap-1">
+                    Click para ver más detalles <FaArrowRight />
+                </p>
+            </div>
+        </div>
+    </a>
+
+    <div class="p-4 flex flex-wrap gap-2">
+        {technologies.map((tech) => {
+            const { color, logo } = techData[tech as keyof typeof techData] || {
+                color: "bg-gray-500",
+                logo: "src/assets/logos/Default.png",
+            };
+
+            return (
+                <span
+                    class={`${color} flex items-center gap-1 px-3 py-1 rounded-2xl text-xs font-semibold border-[0.5px] transition-shadow duration-300 group-hover:shadow-lg`}
+                >
+                    <img src={logo} alt={tech} class="w-4 h-4" />
+                    <span class={color === "bg-white" ? "text-black" : "text-white"}>
+                        {tech}
+                    </span>
+                </span>
+            );
+        })}
+    </div>
+
+    <div class="px-4 pb-6 pt-2">
+        <p class="text-2xl font-bold mb-2">{title}</p>
+        <p class="text-gray-700 text-base">{description}</p>
+    </div>
+</article>

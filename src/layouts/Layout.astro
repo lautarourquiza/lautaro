@@ -1,0 +1,63 @@
+---
+import SideBar from "../components/ui/SideBar.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en" class="overflow-x-hidden max-w-100vw">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>Lautaro Ezequiel | FullStack Developer</title>
+		<script>
+			(function () {
+				try {
+					const key = "theme-preference";
+					const stored = localStorage.getItem(key);
+					const prefersDark =
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches;
+
+					const useDark =
+						stored === "dark" || (stored === null && prefersDark);
+
+					if (useDark) {
+						document.documentElement.classList.add("dark");
+					} else {
+						document.documentElement.classList.remove("dark");
+					}
+				} catch (e) {
+					// ignore
+				}
+			})();
+		</script>
+	</head>
+	<body class="relative">
+		<SideBar />
+		<slot />
+	</body>
+</html>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        max-width: 100vw;
+        position: relative;
+		scroll-behavior: smooth;
+    }
+
+    :global(*) {
+        box-sizing: border-box;
+    }
+</style>
